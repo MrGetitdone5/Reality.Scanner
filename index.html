@@ -1,108 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Reality Scanner</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reality Scanner</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-  <style>
-    body {
-      margin: 0;
-      background: black;
-      color: #00ffcc;
-      font-family: monospace;
-      text-align: center;
-      overflow: hidden;
-    }
+  <body>
+    <div class="app">
+      <div class="topbar">
+        <div class="title">Reality Scanner</div>
+        <div class="pill">Camera • QR Mode</div>
+      </div>
 
-    h1 {
-      margin: 15px 0;
-      text-shadow: 0 0 15px #00ffcc;
-    }
+      <div class="viewport">
+        <video playsinline></video>
+        <div class="frame">
+          <div class="scanBox">
+            <div class="scanLine"></div>
+            <div class="hint">Align the code inside the frame</div>
+          </div>
+        </div>
+      </div>
 
-    #container {
-      position: relative;
-      display: inline-block;
-    }
+      <div class="controls">
+        <button id="scanBtn" class="btn">SCAN</button>
 
-    video {
-      width: 90vw;
-      max-width: 400px;
-      border-radius: 12px;
-      border: 2px solid #00ffcc;
-      box-shadow: 0 0 25px #00ffcc;
-    }
+        <div class="secondary">
+          <button id="flipBtn" class="small">Flip Camera</button>
+          <button class="small" onclick="location.reload()">Reset</button>
+        </div>
 
-    #scanLine {
-      position: absolute;
-      left: 5%;
-      width: 90%;
-      height: 2px;
-      background: #00ffcc;
-      box-shadow: 0 0 15px #00ffcc;
-      animation: scan 2s infinite linear;
-    }
+        <div id="result" class="result">Tap SCAN to start the camera.</div>
+      </div>
+    </div>
 
-    @keyframes scan {
-      0% { top: 0; }
-      100% { top: 100%; }
-    }
-
-    button {
-      margin-top: 20px;
-      background: black;
-      color: #00ffcc;
-      border: 2px solid #00ffcc;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00ffcc;
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    #result {
-      margin-top: 15px;
-      padding: 10px;
-      text-shadow: 0 0 10px #00ffcc;
-    }
-  </style>
-</head>
-
-<body>
-  <h1>Reality Scanner</h1>
-
-  <div id="container">
-    <video id="video" autoplay playsinline></video>
-    <div id="scanLine"></div>
-  </div>
-
-  <br>
-  <button id="scan">SCAN</button>
-
-  <div id="result">Waiting for scan...</div>
-
-<script>
-  const video = document.getElementById("video");
-  const result = document.getElementById("result");
-
-  // Start camera
-  navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-    .then(stream => {
-      video.srcObject = stream;
-    });
-
-  document.getElementById("scan").onclick = () => {
-    navigator.vibrate(120);
-    new Audio("https://actions.google.com/sounds/v1/alarms/beep_short.ogg").play();
-
-    result.innerText = "Scanning reality...";
-    setTimeout(() => {
-      result.innerText = "Object detected. (AI coming next 👁️)";
-    }, 1500);
-  };
-</script>
-
-</body>
+    <script type="module" src="./app.js"></script>
+  </body>
 </html>
