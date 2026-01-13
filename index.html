@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reality Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <h1>Reality Scanner</h1>
+
+  <video id="video" autoplay playsinline></video>
+  <button id="scan">Scan</button>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <pre id="result"></pre>
+
+<script>
+const video = document.getElementById("video");
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => video.srcObject = stream);
+</script>
+</body>
+</html>
