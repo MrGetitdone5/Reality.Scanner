@@ -6,36 +6,24 @@
     <title>Reality Scanner</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
+ 
+<div class="controls">
+  <button id="scanBtn" class="btn">SCAN</button>
 
-  <body>
-    <div class="app">
-      <div class="topbar">
-        <div class="title">Reality Scanner</div>
-        <div class="pill">Camera • QR Mode</div>
-      </div>
+  <div class="secondary">
+    <button id="flipBtn" class="small">Flip Camera</button>
+    <button id="copyBtn" class="small">Copy</button>
+  </div>
 
-      <div class="viewport">
-        <video playsinline></video>
-        <div class="frame">
-          <div class="scanBox">
-            <div class="scanLine"></div>
-            <div class="hint">Align the code inside the frame</div>
-          </div>
-        </div>
-      </div>
+  <div class="secondary">
+    <button id="openBtn" class="small">Open Link</button>
+    <button id="shareBtn" class="small">Share</button>
+  </div>
 
-      <div class="controls">
-        <button id="scanBtn" class="btn">SCAN</button>
+  <label class="result" style="display:grid; gap:10px;">
+    <div><b>Zoom</b> <span id="zoomVal">1.0×</span></div>
+    <input id="zoom" type="range" min="1" max="1" step="0.1" value="1" />
+  </label>
 
-        <div class="secondary">
-          <button id="flipBtn" class="small">Flip Camera</button>
-          <button class="small" onclick="location.reload()">Reset</button>
-        </div>
-
-        <div id="result" class="result">Tap SCAN to start the camera.</div>
-      </div>
-    </div>
-
-    <script type="module" src="./app.js"></script>
-  </body>
-</html>
+  <div id="result" class="result">Tap SCAN to start the camera.</div>
+</div>
