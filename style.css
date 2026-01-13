@@ -156,3 +156,8 @@ video{
   font-size:14px;
   line-height:1.45;
 }
+
+input[type="range"]{
+  width:100%;
+  accent-color: #ec4899;
+}
